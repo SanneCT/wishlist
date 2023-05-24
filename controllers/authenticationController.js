@@ -15,7 +15,7 @@ const handleErrors = (err) => {
 
   //duplicate error code
   if (err.code === 11000) {
-    errors.username = "Brukernavnet er allerede tatt";
+    errors.username = "Beklager, brukernavnet er allerede tatt!";
     return errors;
   }
 
@@ -38,13 +38,15 @@ const createToken = (id) => {
 
 const createuser = async (req, res) => {
   const { username, password } = req.body;
+  const trimmedUsername = username.trim();
+  console.log(trimmedUsername, 'h');
 
   try {
-    const user = await User.create({ username, password });
+    const user = await User.create({ username: trimmedUsername, password });
     const token = createToken(user._id);
 
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({username:user.username, user:user._id});
+    res.status(201).json({username:user.trimmedUsername, user:user._id});
     console.log('user created');
 
   } catch (err) {
