@@ -1,5 +1,10 @@
-const index = (req, res, next) => {
-    res.render('index');
+const User = require('../models/User');
+
+const index = async (req, res, next) => {
+    const brukere = await User.find().limit(5);
+    console.log(brukere)
+    res.render('index', { brukere });
+
 }
 
 const login = (req, res, next) => {

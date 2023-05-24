@@ -11,11 +11,24 @@ const addWish = async (req, res) => {
         res.status(200).json({ user });
 
     } catch (err) {
-        // const errors = handleErrors(err);
-        // res.status(400).json({ errors });
         console.log(err)
 
     };
 };
 
-module.exports = { addWish, }
+
+
+const filter = async (req, res, next) => {
+    const { username } = req.params;
+
+    const bruker = await User.find({ username: username}).sort({createdAt: -1}) ;
+    const wishes = bruker[0].wishes;
+    console.log(wishes)
+    console.log(username)
+    
+    res.render('sorted', { wishes, username });
+
+}
+
+
+module.exports = { addWish, filter}

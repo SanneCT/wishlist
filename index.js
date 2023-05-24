@@ -14,7 +14,7 @@ const { checkUser } = require('./middleware/requireAuth');
 const PORT = process.env.RUNNINGPORT;
 
 // Set up
-app.use(express.static(`${__dirname}/public`)); //public folders
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs'); //There are several types of view engines that you can use
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());

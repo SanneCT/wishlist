@@ -1,0 +1,11 @@
+<%-include('./partials/header') %>
+
+<ol class="wishlist">
+  <% if(wishes.length > 0){ let i = 0; wishes.forEach((wish) => { %>
+
+  <li><%= wishes[i].wish %></li>
+
+  <% i++ }) } %>
+</ol>
+
+<%-include('./partials/footer') %>

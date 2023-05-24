@@ -19,8 +19,6 @@ const author = document.querySelector('.d-none').innerText;
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log('kjører form')
-    console.log(author);
 
     try {
           const response = await fetch("/wish", {
@@ -35,12 +33,9 @@ form.addEventListener('submit', async (e) => {
             result = await response.json();
             console.log('resultatet', result);
 
-            if (result.errors) {
-              return error.textContent = result.errors;
-            }
           }
-        //   location.reload()
-        //   form.reset();
+          location.reload()
+          form.reset();
         } catch (err) {
           console.log(err);
         }

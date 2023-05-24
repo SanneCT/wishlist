@@ -11,7 +11,7 @@ const wishSchema = new Schema({
         required: true,
     },
 
-}, { timestamps: true })
+}, { timestamps: true });
 
 const userschema = new Schema({
     username: {
@@ -26,7 +26,7 @@ const userschema = new Schema({
         minlength: [minpasslength, `Passordet ditt må være minst ${minpasslength} karakterer langt`]
     },
     wishes: [wishSchema],
-})
+});
 
 
 userschema.pre('save', async function (next) {

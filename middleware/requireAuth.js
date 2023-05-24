@@ -8,7 +8,6 @@ const checkUser = (req, res, next) => {
             if (err) {
                 console.log(err.message);
             } else {
-                console.log(decodedToken)
                 const user = await User.findById(decodedToken.id);
                 res.locals.user = user;
             }
