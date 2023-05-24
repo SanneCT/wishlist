@@ -39,7 +39,6 @@ const createToken = (id) => {
 const createuser = async (req, res) => {
   const { username, password } = req.body;
   const trimmedUsername = username.trim();
-  console.log(trimmedUsername, 'h');
 
   try {
     const user = await User.create({ username: trimmedUsername, password });
