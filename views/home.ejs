@@ -11,6 +11,15 @@
     <input type="submit" value="Legg til" />
   </form>
 
+  <ol class="wishlist">
+    <% if(bruker.wishes.length > 0){ let i = 0; bruker.wishes.forEach((wish) => { %>
+  
+    <li><%= bruker.wishes[i].wish %></li>
+  
+    <% i++ }) } %>
+  </ol>
+
+
 <%-include('./partials/footer') %>
 <script>
 

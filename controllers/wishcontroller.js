@@ -17,7 +17,6 @@ const addWish = async (req, res) => {
 };
 
 
-
 const filter = async (req, res, next) => {
     const { username } = req.params;
 
