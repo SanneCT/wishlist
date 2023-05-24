@@ -5,6 +5,14 @@ const minpasslength = 7;
 
 const Schema = mongoose.Schema;
 
+const wishSchema = new Schema({
+    wish: {
+        type: String,
+        required: true,
+    },
+
+}, { timestamps: true })
+
 const userschema = new Schema({
     username: {
         type: String,
@@ -16,11 +24,11 @@ const userschema = new Schema({
         type: String,
         required: [true, "Please enter a password"],
         minlength: [minpasslength, `Passordet ditt må være minst ${minpasslength} karakterer langt`]
-    }
+    },
+    wishes: [wishSchema],
 })
 
-// This method registers a new function to be called before
-// any save method is called on the model.
+
 userschema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
@@ -28,15 +36,12 @@ userschema.pre('save', async function (next) {
 });
 
 
-// This methodis always called after the save method is completed
+
 userschema.post('save', async function (doc, next) {
 
     next();
 });
 
-// The login method will be registered to the User model
-// Static methods are methods that behave exactly the same on all
-// Objects.
 userschema.statics.login = async function (username, password) {
     const user = await this.findOne({ username });
     if (user) {
@@ -49,10 +54,5 @@ userschema.statics.login = async function (username, password) {
     throw Error('Credentials could not be validated');
 }
 
-
-
-// Finally we create and export the User model by passing the userschema and
-// the name of proposed database to the mongoose.model method and store the
-// result in the User variable.
 
 module.exports = mongoose.model('user', userschema);

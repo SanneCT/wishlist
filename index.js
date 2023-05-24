@@ -9,6 +9,7 @@ const app = express();
 // Routes
 const basicroutes = require('./routes/basicroutes');
 const authenticatedroutes = require('./routes/authenticatedroutes');
+const wishroutes = require('./routes/wishroutes');
 const { checkUser } = require('./middleware/requireAuth');
 const PORT = process.env.RUNNINGPORT;
 
@@ -24,6 +25,7 @@ app.get('*', checkUser);
 // Make sure to include the routes
 app.use(basicroutes); //basic functionality for the website
 app.use(authenticatedroutes); //routes that require authentication
+app.use(wishroutes);
 
 app.listen(PORT, () => {
     console.log(`Server started! \nListening to port: ${PORT}`)

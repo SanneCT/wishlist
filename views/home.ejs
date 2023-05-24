@@ -1,5 +1,50 @@
 <%-include('./partials/header') %>
 
-<h1>hjemside</h1>
+<form action="" id="addWish">
+    <p class="d-none"><%= user.username %></p>
+  
+    <h1>Last opp ønsker</h1>
+  
+    <input type="text" name="name" required placeholder="legg til et ønske i listen..." />
+
+  
+    <input type="submit" value="Legg til" />
+  </form>
 
 <%-include('./partials/footer') %>
+<script>
+
+const form = document.querySelector('#addWish');
+const author = document.querySelector('.d-none').innerText;
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    console.log('kjører form')
+    console.log(author);
+
+    try {
+          const response = await fetch("/wish", {
+            method: "POST",
+            body: JSON.stringify({
+              name: form["name"].value,
+              author,
+            }),
+            headers: { "Content-Type": "application/json" },
+          });
+          if (response) {
+            result = await response.json();
+            console.log('resultatet', result);
+
+            if (result.errors) {
+              return error.textContent = result.errors;
+            }
+          }
+        //   location.reload()
+        //   form.reset();
+        } catch (err) {
+          console.log(err);
+        }
+})
+
+
+</script>
