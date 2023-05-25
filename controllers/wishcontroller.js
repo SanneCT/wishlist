@@ -99,6 +99,9 @@ const filter = async (req, res, next) => {
     const { username } = req.params;
 
     const bruker = await User.findOne({ username: username });
+    if(!bruker) {
+        return
+    }
     const wishes = bruker.wishes;
 
 
