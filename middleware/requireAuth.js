@@ -10,10 +10,12 @@ const checkUser = (req, res, next) => {
             } else {
                 const user = await User.findById(decodedToken.id);
                 res.locals.user = user;
+        
             }
             next();
         })
     } else {
+        console.log('else kjører')
         res.locals.user = null;
         next();
     }

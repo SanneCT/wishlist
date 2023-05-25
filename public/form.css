@@ -24,7 +24,7 @@ input[type="password"] {
   margin-bottom: 20px;
 }
 
-button {
+.button-form {
   width: 100%;
   padding: 10px;
   background-color: #B7D5D4;

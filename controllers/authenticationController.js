@@ -42,7 +42,6 @@ const createuser = async (req, res) => {
 
   try {
     const user = await User.create({ username: trimmedUsername, password });
-    console.log('USER FRA CREATEUSER', user);
     const token = createToken(user._id);
 
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
@@ -79,9 +78,7 @@ const getOwn = async (req, res, next) => {
   const { username } = req.params;
 
   const bruker = await User.findOne({username}) ;
-  console.log('BRUKER', bruker);
  
-  
   res.render('home', { bruker, username });
 
 }

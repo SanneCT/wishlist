@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 const index = async (req, res, next) => {
     const brukere = await User.find().sort({updatedAt: -1})
-    console.log('BRUKERRER', brukere);
+    
     res.render('index', { brukere });
 
 }

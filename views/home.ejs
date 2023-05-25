@@ -1,61 +1,103 @@
 <%-include('./partials/header') %>
 
 <form action="" id="addWish">
-    <p class="d-none"><%= user.username %></p>
-  
-    <h1 class="overskrift">Last opp ønsker</h1>
-  
-    <input type="text" name="name" required placeholder="legg til et ønske i listen..." />
+  <p class="d-none"><%= user.username %></p>
 
-  
-    <input type="submit" class="add-btn" value="Legg til" />
-  </form>
+  <h1 class="overskrift">Last opp ønsker</h1>
+
+  <input
+    type="text"
+    name="name"
+    required
+    placeholder="legg til et ønske i listen..."
+  />
+
+  <input type="submit" class="add-btn" value="Legg til" />
+</form>
 <div class="wishlist">
   <ol>
-    <% if(bruker.wishes.length > 0){ let i = 0; bruker.wishes.forEach((wish) => { %>
-  
+    <% if(bruker.wishes.length > 0){ let i = 0; bruker.wishes.forEach((wish) =>
+    { %>
+
     <li><%= bruker.wishes[i].wish%></li>
-    <button class="delete add-btn" data-id="<%= bruker.wishes[i]._id %>">delete</button>
-  
+    <button class="delete add-btn" data-id="<%= bruker.wishes[i]._id %>">
+      delete
+    </button>
+    <br />
+    <form id="change">
+      <input type="submit" class="order-btn" value="+" name="up">
+      <input type="hidden" value="<%=wish._id%>" name="id">
+      
+        <input type="submit" class="order-btn" value="-" name="up">
+    </form>
     <% i++ }) } %>
   </ol>
+  
 </div>
-
 
 <%-include('./partials/footer') %>
 <script>
 
-const form = document.querySelector('#addWish');
-const author = document.querySelector('.d-none').innerText;
+  const changeForm = document.querySelectorAll('#change');
+  const form = document.querySelector("#addWish");
+  const author = document.querySelector(".d-none").innerText;
 
-form.addEventListener('submit', async (e) => {
+  changeForm.forEach(changeForm => {
+    changeForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     try {
-          const response = await fetch("/wish", {
-            method: "POST",
-            body: JSON.stringify({
-              name: form["name"].value,
-              author,
-            }),
-            headers: { "Content-Type": "application/json" },
-          });
-          if (response) {
-            result = await response.json();
-            console.log('resultatet', result);
+      const response = await fetch("/test", {
+        method: "POST",
+        body: JSON.stringify({
+          id: changeForm.id.value,
+          up: e.submitter.value,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (response) {
+        result = await response.json();
+        console.log("resultatet", result);
+      }
+      location.reload();
+    
+    } catch (err) {
+      console.log(err);
+    }
+  });
+    
+  });
 
-          }
-          location.reload()
-          form.reset();
-        } catch (err) {
-          console.log(err);
-        }
-});
 
-document.addEventListener("click", async (e) => {
+  //ADD
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/wish", {
+        method: "POST",
+        body: JSON.stringify({
+          name: form["name"].value,
+          author,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (response) {
+        result = await response.json();
+        console.log("resultatet", result);
+      }
+      location.reload();
+      form.reset();
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  //SLETTE
+  document.addEventListener("click", async (e) => {
     if (e.target.classList.contains("delete")) {
       const id = e.target.dataset.id;
-      console.log(e.target.dataset.id);
+      
 
       try {
         const res = await fetch(`/deleteWish/${id}`, {
@@ -66,14 +108,15 @@ document.addEventListener("click", async (e) => {
         const data = await res.json();
         console.log(data);
 
-        location.reload()
+        location.reload();
       } catch (err) {
         console.log(err);
       }
-
-      
     }
   });
 
-
 </script>
+
+
+
+
