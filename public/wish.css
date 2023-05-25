@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Ubuntu:wght@400;700&display=swap');
+
+/* LANDINGSIDE */
+.wishes {
+    text-align: center;
+    margin-left: 45%;
+}
+
+.wishes p{
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #488286;
+}
+.link {
+    width: 20%;
+    margin-bottom: 2%;
+}
+
+.overskrift {
+    padding-top: 2%;
+    padding-bottom: 1%;
+    font-weight: 700;
+}
+
+ol {
+    margin-left: 890px;
+    line-height: 200%;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    font-size: 150%;
+}
+
+
+
+/* HJEMSIDE */
+
+#addWish {
+    text-align: center;
+}
+
+.add-btn {
+    width: 100px;
+    padding: 10px;
+    background-color: #B7D5D4;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+  
+.add-btn:hover {
+  background-color: greenyellow;
+}
+
+.delete:hover {
+    background-color: red;
+}
+
+.delete {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+

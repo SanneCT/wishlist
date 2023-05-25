@@ -23,8 +23,6 @@ const filter = async (req, res, next) => {
 
     const bruker = await User.findOne({ username: username}) ;
     const wishes = bruker.wishes;
-    console.log("\n\n\n",bruker,"/n/n/n")
-    console.log(wishes)
     
     
     res.render('sorted', { wishes, username });

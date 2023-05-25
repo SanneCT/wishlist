@@ -1,5 +1,6 @@
 <%-include('./partials/header') %>
 
+<h1 class="overskrift">Wishlist for: <%= username %></h1>
 <ol>
   <% if(wishes.length > 0){ let i = 0; wishes.forEach((wish) => { %>
 
@@ -7,5 +8,6 @@
 
   <% i++ }) } %>
 </ol>
+
 
 <%-include('./partials/footer') %>

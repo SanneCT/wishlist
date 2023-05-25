@@ -26,7 +26,7 @@ const userschema = new Schema({
         minlength: [minpasslength, `Passordet ditt må være minst ${minpasslength} karakterer langt`]
     },
     wishes: [wishSchema],
-});
+}, { timestamps: true });
 
 
 userschema.pre('save', async function (next) {
