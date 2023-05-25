@@ -2,14 +2,19 @@
 <h1 class="overskrift">Check out these wishlists</h1>
 
 <% if(brukere){ %> <% brukere.forEach((bruker) => { %>
+
 <% if (bruker.wishes == '') { %>
+
   <div class="wishes">
-  <p class="link" data-id="<%= bruker.username %>"><%= bruker.username %> - <%= bruker.wishes[0] %></p>
-</div>
+    <p class="link" data-id="<%= bruker.username %>"><%= bruker.username %> - <%= bruker.wishes[0] %> ingen ønsker enda</p>
+  </div>
+
   <% }else if(bruker.wishes[0].wish) { %> 
+
   <div class="wishes">
     <p class="link" data-id="<%= bruker.username %>"><%= bruker.username %> - <%= bruker.wishes[0].wish %></p>
   </div>
+
   <%} %>
 <% })} %> 
 

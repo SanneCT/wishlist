@@ -45,7 +45,6 @@ const checkIfHome = (req, res, next) => {
     const searchedUsername = req.params.username;
     const loggedInUser = res.locals.user.username;
     
-
     if (searchedUsername === loggedInUser) {
         next()
 
