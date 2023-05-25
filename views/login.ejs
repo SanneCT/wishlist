@@ -5,10 +5,10 @@
 <form action="/login" method="get" id="loginform">
 
 
-  <input type="username" name="username" id="username" placeholder="username" required/>
+  <input type="username" name="username" id="username" placeholder="brukernavn" required/>
  
 
-  <input type="password" name="password" id="password" placeholder="password" required/>
+  <input type="password" name="password" id="password" placeholder="passord" required/>
   <div class="username error"></div>
   <div class="password error"></div>
 
@@ -55,6 +55,7 @@
       };
 
       if (data.user) {
+        console.log('DATA USER', data.user);
         location.assign(`/home/${data.username}`);
       };
 

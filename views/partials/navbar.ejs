@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="logo">
     <h1>
-      <a href="/"><li class="logo">Logo</li></a>
+      <a href="/"><li class="logo">Wishlist</li></a>
     </h1>
   </div>
   <div>
@@ -13,7 +13,7 @@
   </div>
   <ul>
     <% if(typeof(user) !== 'undefined' && user) {%>
-    <a href="/home/<%= user.username %>"><li>Hjem</li></a>
+    <a href="/home/<%= user.username %>"><li>Min side</li></a>
     <a href="/logout"><li>Logg ut</li></a>
     <% } else { %>
     <a href="/login"><li>Logg inn</li></a>

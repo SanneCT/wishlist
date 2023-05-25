@@ -1,10 +1,10 @@
 <%-include('./partials/header') %>
-
-
 <h1>Check out these wishlists</h1>
 
 <% if(brukere.length > 0){ %> <%let i = 0; brukere.forEach((bruker) => { if (i
 < 5) { %>
+
+  
 
 <div class="wishlist">
   <p class="link" data-id="<%= bruker.username %>"><%= bruker.username %> - <%= bruker.wishes[0].wish %></p>

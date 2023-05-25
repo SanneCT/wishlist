@@ -24,12 +24,13 @@ const requireAuth = (req, res, next) => {
 
     //check jwt exists & is verified
     if (token) {
+        console.log('require auth startet')
         jwt.verify(token, process.env.JWTSECRET, (err, decodedToken) => {
             if (err) {
                 console.log(err.message);
                 res.redirect('/login');
             } else {
-                console.log(decodedToken);
+                console.log('decoded token', decodedToken);
                 next();
             }
         });
@@ -38,18 +39,20 @@ const requireAuth = (req, res, next) => {
     }
 };
 
-const ifHome = (req, res, next) => {
+const checkIfHome = (req, res, next) => {
     const searchedUsername = req.params.username;
     const loggedInUser = res.locals.user.username;
+    
 
     if (searchedUsername === loggedInUser) {
         next()
 
     } else {
-        res.redirect('/')
+        
+        res.redirect('/login')
 
         next()
     }
 }
 
-module.exports = { checkUser, requireAuth, ifHome };
+module.exports = { checkUser, requireAuth, checkIfHome };

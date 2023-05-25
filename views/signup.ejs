@@ -1,20 +1,25 @@
 <%-include('./partials/header')%>
 
+<div class="form-container">
+  <h1>Become a pretentious wisher!</h1>
 <form action="/signup" method="post" id="createuserform">
 
-  <h1>Opprett en bruker</h1>
+ 
 
-  <input type="username" name="username" id="username" placeholder="username" required/>
+  <input type="username" name="username" id="username" placeholder="brukernavn" required/>
 
-  <input type="password" name="password" id="password" placeholder="password" required/>
+  <input type="password" name="password" id="password" placeholder="passord" required/>
   <input type="password" name="password2" id="password2" placeholder="gjenta passord" required/>
 
   <div class="username error"></div>
   <div class="password error"></div>
 
-  <input type="submit" value="Opprett bruker" />
+  <button type="submit">Opprett bruker</button>
 
 </form>
+
+</div>
+
 
 <%-include('./partials/footer')%>
 
@@ -53,7 +58,8 @@ if (password === password2) {
       }
 
       if(data.user) {
-        location.assign(`/home/${data.username}`);
+        console.log('DATA USER', data.username);
+        location.assign('/');
       }
 
     } catch (err) {

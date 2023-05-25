@@ -42,10 +42,11 @@ const createuser = async (req, res) => {
 
   try {
     const user = await User.create({ username: trimmedUsername, password });
+    console.log('USER FRA CREATEUSER', user);
     const token = createToken(user._id);
 
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(201).json({username:user.trimmedUsername, user:user._id});
+    res.status(201).json({user:user._id});
     console.log('user created');
 
   } catch (err) {
@@ -66,8 +67,6 @@ const loginUser = async (req, res) => {
     res.status(200).json({username:user.username, user:user._id});
     console.log('user logged inn');
 
-  
-
   } catch (err) {
 
     const errors = handleErrors(err);
@@ -75,35 +74,16 @@ const loginUser = async (req, res) => {
   }
 };
 
-// const getOwn = async (req, res, next) => {
-//   const { username } = req.params;
-//   console.log('username:', username);
-
-//   const brukere = await User.find({username}) ;
-//   const bruker = brukere[0];
-
-//   console.log('detter er bruker', bruker)
-//   const wishes = bruker.wishes;
- 
-//   console.log('wishes:', wishes)
-
-  
-//   res.render('home', { bruker });
-
-// }
 
 const getOwn = async (req, res, next) => {
   const { username } = req.params;
 
   const bruker = await User.findOne({username}) ;
   console.log('BRUKER', bruker);
-  // const wishes = bruker.wishes;
-  // console.log('WISHES', wishes);
+ 
   
   res.render('home', { bruker, username });
 
 }
-
-
 
 module.exports = { createuser, loginUser, getOwn };

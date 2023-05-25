@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { requireAuth, ifHome } = require('../middleware/requireAuth');
-const { getOwn } = require('../controllers/authenticationController')
+const { getOwn } = require('../controllers/authenticationController');
+const { requireAuth, checkIfHome } = require('../middleware/requireAuth');
 
 
-router.get('/home/:username', requireAuth, ifHome, getOwn,);
+router.get('/home/:username', requireAuth, checkIfHome, getOwn,  );
 
 router.get('/logout', (req, res) => {
     res.cookie('jwt', '', { maxAge: 1 });
