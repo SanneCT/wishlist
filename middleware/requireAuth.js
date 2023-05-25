@@ -57,4 +57,14 @@ const checkIfHome = (req, res, next) => {
     }
 }
 
-module.exports = { checkUser, requireAuth, checkIfHome };
+const notAuth = (req, res, next) => {
+    const token = req.cookies.jwt;
+
+    if (token) {
+        res.redirect("/");
+    } else {
+        next();
+    };
+}
+
+module.exports = { checkUser, requireAuth, checkIfHome, notAuth };
