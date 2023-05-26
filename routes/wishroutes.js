@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { addWish, deleteWish, filter, switchIndex, } = require('../controllers/wishcontroller');
+const { addWish, deleteWish, filter, switchIndex } = require('../controllers/wishcontroller');
 const { checkUser} = require('../middleware/requireAuth')
 
 router.post("/wish", addWish);
@@ -10,6 +10,5 @@ router.get('/:username', filter);
 
 router.delete('/deleteWish/:id', deleteWish);
 
-// router.put('/updateWish/:id', updateWish);
 
 module.exports = router;

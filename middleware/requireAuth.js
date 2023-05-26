@@ -15,7 +15,6 @@ const checkUser = (req, res, next) => {
             next();
         })
     } else {
-        console.log('else kjører')
         res.locals.user = null;
         next();
     }
@@ -26,7 +25,6 @@ const requireAuth = (req, res, next) => {
 
     //check jwt exists & is verified
     if (token) {
-        console.log('require auth startet')
         jwt.verify(token, process.env.JWTSECRET, (err, decodedToken) => {
             if (err) {
                 console.log(err.message);

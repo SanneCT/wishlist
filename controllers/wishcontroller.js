@@ -16,6 +16,7 @@ const addWish = async (req, res) => {
     };
 };
 
+
 const switchIndex = async (req, res) => {
     const { up, id } = req.body;
     console.log(up);

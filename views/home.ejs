@@ -23,6 +23,7 @@
     <button class="delete add-btn" data-id="<%= bruker.wishes[i]._id %>">
       delete
     </button>
+
     <br />
     <form id="change">
       <input type="submit" class="order-btn" value="↑" name="up">
@@ -93,6 +94,7 @@
       console.log(err);
     }
   });
+
 
   //SLETTE
   document.addEventListener("click", async (e) => {
