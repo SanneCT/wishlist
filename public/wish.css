@@ -58,7 +58,7 @@ ol {
 .order-btn {
     width: 30px;
     height: 40px;
-    background-color: #B7D5D4;
+    background-color: #CCE1E0;
     color: #000;
     border: none;
     border-radius: 4px;
@@ -68,7 +68,8 @@ ol {
 }
 
 .order-btn:hover {
-    border: 5px;
+    background-color: #305252;
+    color: #fff;
 }
   
 .add-btn:hover {
