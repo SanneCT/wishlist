@@ -25,10 +25,11 @@
     </button>
     <br />
     <form id="change">
-      <input type="submit" class="order-btn" value="+" name="up">
+      <input type="submit" class="order-btn" value="↑" name="up">
+
       <input type="hidden" value="<%=wish._id%>" name="id">
       
-        <input type="submit" class="order-btn" value="-" name="up">
+      <input type="submit" class="order-btn" value="↓" name="up">
     </form>
     <% i++ }) } %>
   </ol>
@@ -47,7 +48,7 @@
     e.preventDefault();
 
     try {
-      const response = await fetch("/test", {
+      const response = await fetch("/switchIndex", {
         method: "POST",
         body: JSON.stringify({
           id: changeForm.id.value,

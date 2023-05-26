@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { addWish, deleteWish, filter, test, } = require('../controllers/wishcontroller');
+const { addWish, deleteWish, filter, switchIndex, } = require('../controllers/wishcontroller');
 const { checkUser} = require('../middleware/requireAuth')
 
 router.post("/wish", addWish);
 
-router.post("/test", checkUser, test);
+router.post("/switchIndex", checkUser, switchIndex);
 
 router.get('/:username', filter);
 

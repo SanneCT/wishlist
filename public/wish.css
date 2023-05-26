@@ -12,9 +12,17 @@
     border-width: 1px;
     border-color: #488286;
 }
+.wishes p:hover{
+    border-width: 2px;
+}
+
 .link {
     width: 20%;
     margin-bottom: 2%;
+}
+
+.link:hover {
+    cursor: pointer;
 }
 
 .overskrift {

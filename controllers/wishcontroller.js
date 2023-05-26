@@ -16,7 +16,7 @@ const addWish = async (req, res) => {
     };
 };
 
-const test = async (req, res) => {
+const switchIndex = async (req, res) => {
     const { up, id } = req.body;
     console.log(up);
     console.log(id);
@@ -25,7 +25,7 @@ const test = async (req, res) => {
     let i = 0;
 
     switch (up) {
-        case '+':
+        case '↑':
             console.log('det var opp');
             i = 0;
 
@@ -57,7 +57,7 @@ const test = async (req, res) => {
             }
             break;
 
-        case '-':
+        case '↓':
             console.log('det var ned');
             i = 0;
             while (i < wishes.length) {
@@ -141,4 +141,4 @@ const deleteWish = async (req, res) => {
 };
 
 
-module.exports = { addWish, deleteWish, filter, test, }
+module.exports = { addWish, deleteWish, filter, switchIndex, }
